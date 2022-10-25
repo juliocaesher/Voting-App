@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service #External service to allow access to JD POD
+metadata: #Data that helps uniquely identify the object
+  name: result-service #Name of the voting service
+  labels:
+    name: result-service
+    app: demo-voting-app
+spec:
+  type: NodePort #Type of service we are creating
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30005
+  selector: #to link a service with a set of pods (voting-app in this case)
+    name: result-app-pod
+    app: demo-voting-app #name of the application
+

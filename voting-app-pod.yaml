@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: voting-app-pod #Name of the K8s object (the POD)
+  labels: #to allow POD and object differentiation
+    name: voting-app-pod
+    app: demo-voting-app #name of the application
+spec:
+  containers:
+    - name: voting-app #name of the container
+      image: kodekloud/examplevotingapp_vote:v1 #image in DockerHub
+      ports:
+        - containerPort: 80 #Port on which the application listens
+
+          

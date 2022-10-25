@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service #Internal service to allow access to the Redis PODs
+metadata:
+  name: redis #Name of the K8s object (the Service)
+  labels:
+    name: redis-service
+    app: demo-voting-app
+spec:
+  type: ClusterIP #Type of service we are creating
+  ports:
+    - targetPort: 6379
+      port: 6379
+  selector: #to link a service with a set of pods (Redis in this case)
+    name: redis-pod #name of the selected pod
+    app: demo-voting-app #name of the application

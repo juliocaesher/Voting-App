@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: worker-app-pod #Name of the K8s object (the POD)
+  labels: #to allow POD and object differentiation
+    name: worker-app-pod
+    app: demo-voting-app #name of the application
+spec:
+  containers:
+    - name: worker-app #name of the container
+      image: kodekloud/examplevotingapp_worker:v1 #image in DockerHub

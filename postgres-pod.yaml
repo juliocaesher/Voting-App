@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-pod #Name of the K8s object (the POD)
+  labels: #to allow POD and object differentiation
+    name: postgres-pod
+    app: demo-voting-app #name of the application
+spec:
+  containers:
+    - name: postgres #name of the container
+      image: postgres #image in DockerHub
+      ports:
+        - containerPort: 5432 #Port on which the application listens
+      env: #specifies environment variables
+        - name: POSTGRES_USER
+          value: "postgres" #name of the user
+        - name: POSTGRES_PASSWORD
+          value: "postgres"
+#The worker node and the result-app have the username and password of the
+#PostgressDB hard-coded. K8s has other alternatives to plain text
